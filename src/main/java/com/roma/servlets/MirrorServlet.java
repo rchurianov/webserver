@@ -10,23 +10,20 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AllRequestsServlet extends HttpServlet {
-	
+public class MirrorServlet extends HttpServlet {
+
 	public void doGet(HttpServletRequest request,
 					  HttpServletResponse response) throws ServletException, IOException {
-		//
 		Map<String, Object> pageVariables = createPageVariablesMap(request);
 		pageVariables.put("message", "");
-
-		response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
-
+		response.getWriter().println(request.getParameter("key"));
 		response.setContentType("text/html;charset=utf-8");
 		response.setStatus(HttpServletResponse.SC_OK);
-
 	}
 
 	public void doPost(HttpServletRequest request,
 					   HttpServletResponse response) throws ServletException, IOException {
+		
 		Map<String, Object> pageVariables = createPageVariablesMap(request);
 
 		String message = request.getParameter("message");
@@ -40,7 +37,7 @@ public class AllRequestsServlet extends HttpServlet {
 		}
 		pageVariables.put("message", message == null ? "" : message);
 
-		response.getWriter().println(PageGenerator.instance().getPage("page.html", pageVariables));
+		response.getWriter().println(request.getParameter("key"));
 	}
 
 	private static Map<String, Object> createPageVariablesMap(HttpServletRequest request) {

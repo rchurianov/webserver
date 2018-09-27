@@ -1,1 +1,4 @@
-com\roma\app\Server.class
+com\roma\app\WebServer.class
+com\roma\app\servlets\AllRequestsServlet.class
+com\roma\app\servlets\MirrorServlet.class
+com\roma\templater\PageGenerator.class

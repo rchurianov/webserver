@@ -1,7 +1,7 @@
 package com.roma.templater;
 
 import freemarker.template.Configuration;
-import freemarker.template.Tempalte;
+import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 import java.io.File;
@@ -32,12 +32,10 @@ public class PageGenerator {
 		} catch (IOException | TemplateException e) {
 			e.printStackTrace();
 		}
-		return stream.troString();
+		return stream.toString();
 	}
 
 	private PageGenerator() {
 		cfg = new Configuration();
 	}
-
-
 }
